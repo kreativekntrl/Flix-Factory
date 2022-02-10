@@ -3,20 +3,39 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>{{title}}</title>
+    <title>{{title}}</title>  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100&effect=neon">
     <link rel='stylesheet' href='/css/style.css' />
   </head>
   <body>
     <nav>
+      <div class="Home">
       <a href='/'>Home</a>
+      </div>
+      <h1 class='font-effect-neon'>Flix Factory</h1>
+      <div class="login">
       {{#if isLoggedIn}}
         <button class='btn btn-logout'>Log Out</button>
       {{else}}
-        <a href='/login'>login</a>
-        <a href='/signup'>signup</a>
+        <div>
+        <a href='/login'>Login</a>
+        <a href='/signup'>Signup</a>
+        </div>
       {{/if}}
+      </div>
     </nav>
+
+  <div>
     {{{body}}}
+  </div>
+  <footer>
+    <h1><a href="/" class="fontBlack">Home</a></h1>
+    <div class="separator"></div>
+    <h1><a href="/post" class="fontBlack btn-post">Post</a></h1>
+    <div class="separator"></div>
+    <h1><a href="/login" class="fontBlack">Login</a></h1>
+  </footer>
+    
     <script src='/js/main.js'></script>
   </body>
 </html>
