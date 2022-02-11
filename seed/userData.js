@@ -37,10 +37,8 @@ const userData = [
     email: "eric@email.com",
     password: "password",
   },
-  
-  
 ];
 
-const seedUsers = () => User.bulkCreate(userData);
+const seedUser = () => User.bulkCreate(userData);
 
-module.exports = seedUsers;
+module.exports = seedUser;
