@@ -1,3 +1,6 @@
+// fetch get request when someone logs in
+// fetch post request when someone signs up
+
 // Validate user input and send login request
 const handleLoginSubmit = async (event) => {
   event.preventDefault();
