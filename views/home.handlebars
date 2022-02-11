@@ -1,12 +1,47 @@
-<h1>Home</h1>
-{{#if isLoggedIn}}
-  <h2>Welcome, {{user.username}}!</h2>
-  <p>Your id is <strong>{{user.id}}</strong>.</p>
-{{/if}}
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quasi ab harum
-  sequi quis iure voluptatibus doloremque dicta optio maiores!</p>
-{{#unless isLoggedIn}}
-  <br />
-  <a class='btn' href='/signup'>Sign Up</a>
-{{/unless}}
+<div class="marginLeft text-color">
+  <h2>Networks:</h2>
+  <h3 class="h3Center">
+    <label class="container">Netflix
+      <input type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">HBO
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Hulu
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Disney+
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+  </h3>
+</div>
+{{!-- {{#each post}} --}}
+<div class="center-post">
+  <div class="card card-color" style="width: 80%;">
+    <div class="card-body">
+      <h5 class="card-title card-text-c">Username: {{user.username}}</h5>
+      <h6 class="card-subtitle mb-2 card-text-c">Network: {{network.name}}</h6>
+      <h6 class="card-subtitle mb-2 card-text-c">Show/Movie: {{show.name}}</h6>
+      <p class="card-text card-text-c">Blog: {{post.text-content}}</p>
+    </div>
+  </div>
+</div>
+{{!-- {{/each}} --}}
+<footer class="footer-bkg">
+    <h1><a href="/" class="fontBlack">Home</a></h1>
+    <div class="separator"></div>
+    <h1><a href="/post" class="fontBlack btn-post">Post</a></h1>
+    <div class="separator"></div>
+    {{#if isLoggedIn}}
+    <h1><a href="/home" class="fontBlack">Logout</a></h1>
+    {{else}}
+    <h1><a href="/login" class="fontBlack">Login</a></h1>
+    {{/if}}
+  </footer>

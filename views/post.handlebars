@@ -1,34 +1,27 @@
-<h2 class="marginLeft">Networks:</h2>
-{{!-- {{#if isLoggedIn}}
-  <h2>Welcome, {{user.username}}!</h2>
-  <p>Your id is <strong>{{user.id}}</strong>.</p>
-{{/if}} --}}
-<h3 class="h3Center">
-<label class="container">Netflix
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label>
-
-<label class="container">HBO
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-
-<label class="container">Hulu
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-
-<label class="container">Disney+
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-</h3>
-
-<h2 class="marginLeft"><label for="name">Show/Movie</label></h2>
-<input class="marginLeft" type="text" id="name">
+<div class="dropdown dd-margin">
+  <button class="btn btn-secondary dropdown-toggle btn-color" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Shows/Movies
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    {{#each shows as |show|}}
+    <li><a class="dropdown-item" href="#">{{show.name}}</a></li>
+    {{/each}}
+  </ul>
+</div>
 
 <h2 class="marginLeft"><label for="name">Blog</label></h2>
 <input class="marginLeft input-element" type="text" id="name">
 
-<h2 class="marginLeft submit"><input type="submit" value="Submit"/></h2>
+<h2 class="marginLeft submit-btn submit"><input type="submit" value="Submit"/></h2>
+
+<footer class="footer-bkg">
+    <h1><a href="/" class="fontBlack">Home</a></h1>
+    <div class="separator"></div>
+    <h1><a href="/post" class="fontBlack btn-post">Post</a></h1>
+    <div class="separator"></div>
+    {{#if isLoggedIn}}
+    <h1><a href="/home" class="fontBlack">Logout</a></h1>
+    {{else}}
+    <h1><a href="/login" class="fontBlack">Login</a></h1>
+    {{/if}}
+  </footer>

@@ -1,3 +1,5 @@
+/// fetch get request to pull all the posts
+
 document.querySelector(".btn-logout").addEventListener("click", async () => {
   try {
     await fetch("/api/users/logout", { method: "POST" });

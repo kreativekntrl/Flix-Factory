@@ -1,20 +1,33 @@
+.center-post {
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.fontBlack {
+  color:rgb(36, 34, 34)
+}
+
+.text-color {
+  color:rgb(36, 34, 34);
+}
+
 body {
-  background-image: linear-gradient(#9400d3, #9400d3, #ffd700);
+  background-image: white;
   margin: 0px;
   min-height: 100%;
 }
 
 nav {
   display: flex;
-  background-color: black;
+  background-color: rgb(61, 138, 99);
   margin: 0px;
   justify-content: space-evenly;
 }
 
 .font-effect-neon {
   font-family: 'Satisfy', cursive;
-  font-size: 30px;
-  background: #111;
+  font-size: 50px;
+  color: white;
   text-align: center;
   margin: 0px;
 }
@@ -47,8 +60,30 @@ a {
 
 .btn-logout {
   padding: 10px 28px;
-  background-color: #e7e7e7;
-  color: black;
+  background-color: rgb(61, 138, 99);
+  color:rgb(36, 34, 34);
+}
+
+.dd-margin {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.submit-btn {
+  margin-top: 20px;
+}
+
+.btn-color {
+  background-color: rgb(61, 138, 99);
+  color:rgb(36, 34, 34);
+}
+
+.card-color {
+  background-color:rgb(61, 138, 99);
+}
+
+.card-text-c {
+  color:rgb(36, 34, 34);
 }
 
 footer {
@@ -63,6 +98,11 @@ footer {
 
 .separator {
   border: solid 2px;
+  color: rgb(36, 34, 34);
+}
+
+.footer-bkg {
+  background-color:rgb(61, 138, 99);
 }
 
 a {
@@ -75,7 +115,7 @@ a {
 }
 
 .marginLeft {
-  margin: 10px 10px 0px 10px;
+  margin-left: 40px;
 }
 
 .input-element{
