@@ -1,3 +1,4 @@
+
 const { Network } = require('../models');
 
 const networkData = [
