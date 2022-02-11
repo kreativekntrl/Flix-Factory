@@ -1,5 +1,7 @@
 const router = require("express").Router();
+
 const { Post, User, Network, Show } = require("../models");
+
 const withAuth = require("../util/withAuth");
 
 // Needed for query string:
