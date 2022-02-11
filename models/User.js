@@ -66,10 +66,3 @@ User.init({
 });
 
 module.exports = User;
-
-User.create({
-  id: 1,
-  username: "",
-  email: "ava@gmail.com",
-  password: "123ertf",
-}).catch(err => console.log(err));
