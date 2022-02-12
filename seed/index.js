@@ -1,26 +1,24 @@
-require("dotenv").config();
-const sequelize = require("../config/connection");
-const { Post } = require("../models");
+const sequelize = require('../config/connection');
+const seedNetwork = require('./networkData');
+const seedPost = require('./postData');
+const seedUser = require("./userData");
+const seedShow = require("./showData");
 
-const userData = require("./userData.json");
 
-const seedDatabase = async () => {
-  try {
-    await sequelize.sync({ force: true });
-    await Post.bulkCreate(userData, {
-      individualHooks: true,
-      returning: true,
-    });
-    console.log("Finished seeding database.");
-  } catch (error) {
-    console.error(error);
-    console.error(
-      "An error occurred attempting to seed the database. Scroll up for additional details."
-    );
-  } finally {
-    await sequelize.close();
-    process.exit(0);
-  }
+const seedAll = async () => {
+  await sequelize.sync({ force: true });
+
+  await seedNetwork();
+
+  await seedUser();
+
+  await seedShow();
+  
+  await seedPost();
+
+
+
+  process.exit(0);
 };
 
-seedDatabase();
+seedAll();
