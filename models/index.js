@@ -1,5 +1,30 @@
-const User = require("./User");
+const Network = require('./Network');
+const User = require('./User');
+const Post = require("./Post");
+const Show = require("./Show");
 
-// Define sequelize associations in this file.
+Show.belongsTo(Network, {
+    foreignKey: "network_id",
+    onDelete: "CASCADE",
+  });
+  
+Network.hasMany(Show);
+  
+Post.belongsTo(User, {
+    foreignKey: "user_id",
+    onDelete: "CASCADE",
+  });
+  
+User.hasMany(Post);
 
-module.exports = { User };
+Show.hasMany(Post, {
+    foreignKey: "post_id",
+    onDelete: "CASCADE",
+});
+
+Post.belongsTo(Show);
+
+
+
+
+module.exports = { Network, User, Post, Show };
