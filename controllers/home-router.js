@@ -15,64 +15,58 @@ const { Post, User, Network, Show } = require("../models");
 //   // ...
 // });
 
-Homepage route:
-router.get('/', async (req, res) => {
-    try {
-      res.render("home");
-    } catch (err) {
-      res.status(500).json(err);
-    }
-});
+// Homepage route:
+// router.get('/', async (req, res) => {
+//     try {
+//       res.render("home");
+//     } catch (err) {
+//       res.status(500).json(err);
+//     }
+// });
 
 // Homepage route with query url: http://localhost:3001/?network_id=1
-// router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
 
 //   // Access the "network" and "date" query parameters:
-//   let network_id = req.query.network_id;
+//   // let network_id = req.query.network_id;
 //   // let date = req.query.date;
 
-//   if (network_id && network_id === '1') {
-//   try {
-//     const postData = await Post.findAll({
-//       include: [
-//         {
-//           model: Post,
-//           attributes: ['name', 'text_content'],
-//         },
-//         {
-//           model: User,
-//           attributes: ['username'],
-//         },
-//         {
-//           model: Network,
-//           attributes: ['id', 'name'],
-//         },
-//         {
-//           model: Show,
-//           attributes: ['name'],
-//         },
-//       ],
-//       where: {
-//         model: Network,
-//         attributes: {
-//           id: 1,
-//         }
-//       },
-//     });
-
+//   // if (network_id && network_id === '1') {
+  try {
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          required: true,
+          attributes: ['username'],
+        },
+        {
+          model: Show,
+          required: true,
+          attributes: ['id', 'title'],
+          include: { model: Network },
+        },
+      ],
+      // where: {
+      //   model: Network,
+      //   attributes: {
+      //     id: 1,
+      //   },
+      // },
+    });
 //     // Serialize data so the template can read it
-//     const posts = postData.map((post) => post.get({ plain: true }));
+    const posts = postData.map((post) => post.get({ plain: true }));
 
 //     // Pass serialized data and session flag into template
-//     res.render('home', { 
-//       posts, 
-//       logged_in: req.session.logged_in 
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
+    res.render('home', { 
+      posts 
+//       // logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 // }
-// });
+});
 
 // Login route:
 router.get('/login', async (req, res) => {
