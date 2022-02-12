@@ -24,7 +24,4 @@ Show.hasMany(Post, {
 
 Post.belongsTo(Show);
 
-
-
-
 module.exports = { Network, User, Post, Show };
