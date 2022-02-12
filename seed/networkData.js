@@ -16,7 +16,7 @@ const networkData = [
   },
   {
     id: 4,
-    name: "Huu"
+    name: "Hulu"
   },
 ];
  
