@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const { Post, User, Network, Show } = require("../models");
 
-const withAuth = require("../util/withAuth");
+// const withAuth = require("../util/withAuth");
 
 // Needed for query string:
 // const url = require('url');
@@ -15,7 +15,7 @@ const withAuth = require("../util/withAuth");
 //   // ...
 // });
 
-// Homepage route:
+Homepage route:
 router.get('/', async (req, res) => {
     try {
       res.render("home");
@@ -24,13 +24,15 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Homepage route with query: or should it only be on /post so only logged in users can refine search?
+// Homepage route with query url: http://localhost:3001/?network_id=1
 // router.get('/', async (req, res) => {
-//   try {
-//     Access the "network" and "date" query parameters:
-//     let network = req.query.network;
-//     let date = req.query.date;
 
+//   // Access the "network" and "date" query parameters:
+//   let network_id = req.query.network_id;
+//   // let date = req.query.date;
+
+//   if (network_id && network_id === '1') {
+//   try {
 //     const postData = await Post.findAll({
 //       include: [
 //         {
@@ -43,29 +45,36 @@ router.get('/', async (req, res) => {
 //         },
 //         {
 //           model: Network,
-//           attributes: ['name'],
+//           attributes: ['id', 'name'],
 //         },
 //         {
 //           model: Show,
 //           attributes: ['name'],
 //         },
 //       ],
-//     }).paginate({network: network, date: date}).exec();
+//       where: {
+//         model: Network,
+//         attributes: {
+//           id: 1,
+//         }
+//       },
+//     });
 
 //     // Serialize data so the template can read it
 //     const posts = postData.map((post) => post.get({ plain: true }));
 
 //     // Pass serialized data and session flag into template
-//     res.render('homepage', { 
+//     res.render('home', { 
 //       posts, 
 //       logged_in: req.session.logged_in 
 //     });
 //   } catch (err) {
 //     res.status(500).json(err);
 //   }
+// }
 // });
 
-// Login route: (can we change to /main? since login is on just /)
+// Login route:
 router.get('/login', async (req, res) => {
   try {
     res.render("login", { title: "Log-In Page" });
@@ -74,20 +83,10 @@ router.get('/login', async (req, res) => {
   }
 });
 
-// Posts route: take withAuth out before testing
+// Posts route: add withAuth,
 router.get('/post', async (req, res) => {
   try {
     // findAll
-    res.render("post");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Posts by id route:
-router.get('/post/:id', async (req, res) => {
-  try {
-    // findByPK(req.params.id, { include: })
     res.render("post");
   } catch (err) {
     res.status(500).json(err);
