@@ -67,13 +67,17 @@ router.get('/signup', async (req, res) => {
 // Posts route: add withAuth,
 router.get('/post', withAuth, async (req, res) => {
   try {
+    const showData = await Show.findAll({});
+    const shows = showData.map((show) => show.get({ plain: true }));
     // findAll
     res.render("post", {
-      loggedIn: req.session.loggedIn 
+      loggedIn: req.session.loggedIn, 
+      shows
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;
