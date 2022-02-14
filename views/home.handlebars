@@ -1,5 +1,6 @@
+<div class="container-fluid">
 <div class="row">
-<div class="col">
+<div class="col ml-1">
   <fieldset id="networks">
     <legend>Filter by your favorite network:</legend>
     {{#each networks as |network|}}
@@ -7,13 +8,14 @@
       <input type="radio" id="net-{{network.name}}" name="network" value="{{network.id}}">
     {{/each}}
   </fieldset>
-  <button class="btn btn-outline-secondary" id="reset-categories">Reset</button>
+  <button class="btn btn-sm btn-outline-secondary" id="reset-categories">Reset</button>
 </div>
 </div>
 
+<div class="row justify-content-center">
+<div class="col-8">
 {{#each posts as |post|}}
-<div class="center-post">
-  <div class="card card-color" style="width: 80%;">
+  <div class="mb-1 card card-color" style="width: 80%;">
     <div class="card-body">
       <h5 class="card-title card-text-c">Username: {{post.user.username}}</h5>
       <h6 class="card-subtitle mb-2 card-text-c">Network: {{post.show.network.name}}</h6>
@@ -21,8 +23,11 @@
       <p class="card-text card-text-c">Blog: {{post.text_content}}</p>
     </div>
   </div>
-</div>
 {{/each}}
+</div>
+</div>
+
+<div class="row">
 <footer class="footer-bkg">
     <h1><a href="/" class="fontBlack">Home</a></h1>
     <div class="separator"></div>
@@ -34,5 +39,6 @@
     <h1><a href="/login" class="fontBlack">Login</a></h1>
     {{/if}}
   </footer>
-
+</div>
+</div>
   <script src='/js/home.js'></script>
