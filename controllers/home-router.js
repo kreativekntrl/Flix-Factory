@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const { Post, User, Network, Show } = require("../models");
 
-// const withAuth = require("../util/withAuth");
+const withAuth = require("../util/withAuth");
 
 // use withAuth middleware to redirect from protected routes.
 
@@ -72,7 +72,7 @@ router.get('/signup', async (req, res) => {
 });
 
 // Posts route: add withAuth,
-router.get('/post', async (req, res) => {
+router.get('/post', withAuth, async (req, res) => {
   try {
     // findAll
     res.render("post");
