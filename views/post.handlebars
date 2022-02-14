@@ -1,18 +1,16 @@
-<div class="dropdown dd-margin">
-  <button class="btn btn-secondary dropdown-toggle btn-color" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Shows/Movies
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    {{#each shows as |show|}}
-    <li><a class="dropdown-item" href="#">{{show.name}}</a></li>
-    {{/each}}
-  </ul>
-</div>
+<form class="post-form">
+  <select class="form-select" id="shows" aria-label="Default select example">
+  <option selected>Select a Show/Movie</option>
+  {{#each shows as |show|}}
+  <option value="{{show.id}}">{{show.title}}</option>
+  {{/each}}
+  </select>
+  
+  <h2 class="marginLeft"><label for="name">Blog</label></h2>
+  <input class="marginLeft input-element" type="text" id="text-context">
 
-<h2 class="marginLeft"><label for="name">Blog</label></h2>
-<input class="marginLeft input-element" type="text" id="name">
-
-<h2 class="marginLeft submit-btn submit"><input type="submit" value="Submit"/></h2>
+  <h2 class="marginLeft submit-btn submit"><input type="submit" value="Submit"/></h2>
+</form>
 
 <footer class="footer-bkg">
     <h1><a href="/" class="fontBlack">Home</a></h1>
@@ -25,3 +23,5 @@
     <h1><a href="/login" class="fontBlack">Login</a></h1>
     {{/if}}
   </footer>
+
+ <script src='/js/post.js'></script>
