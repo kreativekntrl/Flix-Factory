@@ -4,13 +4,6 @@ const { Post, User, Network, Show } = require("../models");
 
 const withAuth = require("../util/withAuth");
 
-// use withAuth middleware to redirect from protected routes.
-
-// example of a protected route
-// router.get("/users-only", withAuth, (req, res) => {
-//   // ...
-// });
-
 // Homepage route with query url: http://localhost:3001/?network_id=1
 router.get('/', async (req, res) => {
     try {
@@ -75,7 +68,9 @@ router.get('/signup', async (req, res) => {
 router.get('/post', withAuth, async (req, res) => {
   try {
     // findAll
-    res.render("post");
+    res.render("post", {
+      loggedIn: req.session.loggedIn 
+    });
   } catch (err) {
     res.status(500).json(err);
   }
