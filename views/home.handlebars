@@ -1,27 +1,16 @@
-<div class="marginLeft text-color">
-  <h2>Networks:</h2>
-  <h3 class="h3Center">
-    <label class="container">Netflix
-      <input type="checkbox" checked="checked">
-      <span class="checkmark"></span>
-    </label>
-
-    <label class="container">HBO
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
-
-    <label class="container">Hulu
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
-
-    <label class="container">Disney+
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
-  </h3>
+<div class="row">
+<div class="col">
+  <fieldset id="networks">
+    <legend>Filter by your favorite network:</legend>
+    {{#each networks as |network|}}
+      <label for="net-{{network.name}}">{{network.name}}</label>
+      <input type="radio" id="net-{{network.name}}" name="network" value="{{network.id}}">
+    {{/each}}
+  </fieldset>
+  <button class="btn btn-outline-secondary" id="reset-categories">Reset</button>
 </div>
+</div>
+
 {{#each posts as |post|}}
 <div class="center-post">
   <div class="card card-color" style="width: 80%;">
@@ -45,3 +34,5 @@
     <h1><a href="/login" class="fontBlack">Login</a></h1>
     {{/if}}
   </footer>
+
+  <script src='/js/home.js'></script>
