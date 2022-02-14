@@ -1,5 +1,15 @@
 // fetch post request to make a post
+document.querySelector(".btn-logout1").addEventListener("click", async () => {
+  try {
+    await fetch("/api/user/logout", { method: "POST" });
+    document.location.replace("/");
+  } catch (error) {
+    console.error(error);
+    console.error("Failed to logout.");
+  }
+});
 
+// 
 const newFormHandler = async (event) => {
     event.preventDefault();
   
