@@ -25,7 +25,7 @@ User.init({
     allowNull: false,
     unique: true,
     validate: {
-      is: /[a-z0-9_]/i,
+      is: /[a-z0-9_.]/i,
       len: [2, 15],
     }
   },
@@ -66,3 +66,4 @@ User.init({
 });
 
 module.exports = User;
+
