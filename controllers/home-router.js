@@ -40,13 +40,13 @@ router.get('/', async (req, res) => {
           {
             model: User,
             required: true,
-            attributes: ['username'],
+            attributes: ["username"],
           },
           {
             model: Show,
             required: true,
-            attributes: ['id', 'title', 'network_id'],
-            include: { model: Network},
+            attributes: ["id", "title", "network_id"],
+            include: { model: Network, where: { id: 2 } },
           },
         ],
       });
