@@ -4,10 +4,6 @@ const { Post, User, Network, Show } = require("../models");
 
 // const withAuth = require("../util/withAuth");
 
-// Needed for query string:
-// const url = require('url');
-// const querystring = require('querystring');
-
 // use withAuth middleware to redirect from protected routes.
 
 // example of a protected route
@@ -15,25 +11,14 @@ const { Post, User, Network, Show } = require("../models");
 //   // ...
 // });
 
-// Homepage route:
-// router.get('/', async (req, res) => {
-//     try {
-//       res.render("home");
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-// });
-
 // Homepage route with query url: http://localhost:3001/?network_id=1
 router.get('/', async (req, res) => {
-
-  //   // Access the "network" and "date" query parameters:
-  //   // let network_id = req.query.network_id;
-  //   // let date = req.query.date;
-  
-  //   // if (network_id && network_id === '1') {
     try {
-
+      const where = {};
+      const { network_id } = req.query;
+      if (network_id) {
+      where.network_id = network_id;
+      }
       // Get all posts and JOIN with user data
       const postData = await Post.findAll({
         include: [
@@ -46,32 +31,26 @@ router.get('/', async (req, res) => {
             model: Show,
             required: true,
             attributes: ["id", "title", "network_id"],
-            include: { model: Network, where: { id: 2 } },
+            where,
+            include: Network,
           },
         ],
       });
+      const networkData = await Network.findAll();
 
-      // const showData = await Show.findAll({
-      //   where: { network_id: 1 },
-      //   include: [
-      //     {
-      //       model: Network,
-      //       attributes: ['name']
-      //     }
-      //   ]
-      // });
-  //     // Serialize data so the template can read it
+      // Serialize data so the template can read it
       const posts = postData.map((post) => post.get({ plain: true }));
-      // const shows = showData.map((show) => show.get({ plain: true }));
-  //     // Pass serialized data and session flag into template
+      const networks = networkData.map((network) => network.get({ plain: true }));
+
+      // Pass serialized data and session flag into template
       res.render('home', { 
-        posts
-  //       // logged_in: req.session.logged_in 
+        posts,
+        networks
+        // logged_in: req.session.logged_in 
       });
     } catch (err) {
       res.status(500).json(err);
     }
-  // }
   });
 
 // Login route:
