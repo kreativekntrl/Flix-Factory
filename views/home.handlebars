@@ -12,12 +12,12 @@
 </div>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-5">
 <div class="col-8">
 {{#each posts as |post|}}
   <div class="mb-1 card card-color" style="width: 80%;">
     <div class="card-body">
-      <h5 class="card-title card-text-c">Username: {{post.user.username}}</h5>
+      <h5 class="card-title card-text-c">{{post.user.username}}</h5>
       <h6 class="card-subtitle mb-2 card-text-c">Network: {{post.show.network.name}}</h6>
       <h6 class="card-subtitle mb-2 card-text-c">Show/Movie: {{show.title}}</h6>
       <p class="card-text card-text-c">Blog: {{post.text_content}}</p>
