@@ -1,7 +1,7 @@
 const router = require("express").Router();
-
+const axios = require("axios");
 const { Post, User, Network, Show } = require("../models");
-
+const {showData} = require("../seed/movie-list");
 const withAuth = require("../util/withAuth");
 
 // Homepage route with query url: http://localhost:3001/?network_id=1
@@ -47,9 +47,29 @@ router.get('/', async (req, res) => {
   });
 
 // Login route:
-router.get('/login', async (req, res) => {
+router.get("/login", async (req, res) => {
+  console.log(showData);
+  const movieCount = showData.length;
+  
+  const randomNumber = Math.floor(Math.random() * movieCount)
+  const title = showData[randomNumber].title;
+
+  const options = {
+    method: "GET",
+    url: `https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/${title}`,
+    headers: {
+      "x-rapidapi-host":
+        "imdb-internet-movie-database-unofficial.p.rapidapi.com",
+      "x-rapidapi-key": "cc0e5a2416mshaaa2be13950d9e6p1b615fjsnd37717c2051a",
+    },
+  };
+
+  
+  const response =  await axios.request(options)
+  const imgUrl = response.data.titles[0].image;
+  
   try {
-    res.render("login", { title: "Log-In Page" });
+    res.render("login", { title: "Log-In Page", url: imgUrl });
   } catch (err) {
     res.status(500).json(err);
   }
