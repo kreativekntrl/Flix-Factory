@@ -1,18 +1,24 @@
-<div class="login-margin">
-  <h1>Login</h1>
+<div class="login-margin row">
+  <div class="col-sm">
+    <h1>Login</h1>
 
-  <form class='login-form'>
-    <label for='email'>Email</label><br />
-    <input type='text' name='email' id='email-login' /><br />
-    <label for='username'>Username</label><br />
-    <input type='text' name='username' id='username-login' /><br />
-    <label for='password'>Password</label><br />
-    <input type='password' name='password' id='password-login' /><br />
-    <button class='btn' type='submit'>Submit</button>
-  </form>
+    <form class='login-form'>
+      <label for='email'>Email</label><br />
+      <input type='text' name='email' id='email-login' /><br />
+      <label for='username'>Username</label><br />
+      <input type='text' name='username' id='username-login' /><br />
+      <label for='password'>Password</label><br />
+      <input type='password' name='password' id='password-login' /><br />
+      <button class='btn' type='submit'>Submit</button>
+    </form>
 
-  <p>Don't have an account yet? <a href='/signup'>Sign Up Here</a></p>
-  <p><a href='/'>Continue as Guest</a></p>
+    <p>Don't have an account yet? <a href='/signup'>Sign Up Here</a></p>
+    <p><a href='/'>Continue as Guest</a></p>
+  </div>
+  <div class="col-sm d-sm-none d-md-block">
+    <img class="imageApi img-fluid" src="{{url}}">
+  </div>
+
 </div>
 
 <script src='/js/login.js'></script>
