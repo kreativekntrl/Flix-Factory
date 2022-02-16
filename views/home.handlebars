@@ -18,9 +18,9 @@
   <div class="mb-1 card card-color" style="width: 80%;">
     <div class="card-body">
       <h5 class="card-title card-text-c">{{post.user.username}}</h5>
-      <h6 class="card-subtitle mb-2 card-text-c">Network: {{post.show.network.name}}</h6>
-      <h6 class="card-subtitle mb-2 card-text-c">Show/Movie: {{show.title}}</h6>
-      <p class="card-text card-text-c">Blog: {{post.text_content}}</p>
+      <h6 class="card-subtitle mb-2 card-text-c" style="display: none;">Network: {{post.show.network.name}}</h6>
+      <h6 class="card-subtitle mb-2 card-text-c">Series: {{show.title}}</h6>
+      <p class="card-text card-text-c">{{post.text_content}}</p>
     </div>
   </div>
 {{/each}}
