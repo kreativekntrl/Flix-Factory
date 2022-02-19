@@ -6,17 +6,17 @@ const seedShow = require("./showData");
 
 
 const seedAll = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({
+    force: true
+  });
 
   await seedNetwork();
 
   await seedUser();
 
   await seedShow();
-  
+
   await seedPost();
-
-
 
   process.exit(0);
 };

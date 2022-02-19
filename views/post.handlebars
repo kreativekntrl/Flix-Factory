@@ -1,12 +1,12 @@
 <form class="post-form">
   <select class="form-select" id="shows" aria-label="Default select example">
-  <option selected>Select a Show/Movie</option>
+  <option selected>Select a Show</option>
   {{#each shows as |show|}}
   <option value="{{show.id}}">{{show.title}}</option>
   {{/each}}
   </select>
   
-  <h2 class="marginLeft"><label for="name">Blog</label></h2>
+  <h2 class="marginLeft"><label for="name">Post</label></h2>
   <input class="marginLeft input-element" type="text" id="text-context">
 
   <h2 class="marginLeft submit-btn submit"><input type="submit" value="Submit"/></h2>
